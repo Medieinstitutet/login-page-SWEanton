@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login / Sign up</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-    <div class="container">
-      <label for="userName"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" id="userName" value="userName" required >
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" id="password" value="password" required>
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-    <div class="container" style="background-color:#f1f1f1">
-    </div>
-  </form>
-<h1 id="demo"</h1>
-
 <body>
+  <div class="container">
+
+      <b>Username:</b>
+      <input id="userName" type="text" placeholder="Enter Username" value="userName" required >
+
+      <b>Password:</b>
+      <input id="password" type="text" placeholder="Enter Password" value="password" required>
+
+<!-- knappar -->
+      <button id="logInBtn" ><b>Log in</b></button>
+      <button id="signUpBtn"><b>Create account</b></button>
+      <button id="LogOutBtn"><b>Log out</b></button> </button>
+
+
+
+    </div>
+
+<h1 id="demo"></h1>
+
+
 
 </body>
-
 </html>
