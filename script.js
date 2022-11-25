@@ -1,40 +1,54 @@
-console.log("test");
+console.log("test"); 
 
-const loginBtn = document.getElementById("LogInBtn");
-const userName = document.getElementById("UserName");
-const password = document.getElementById("Password");
+//Deklarerar alla element//
+const LoginBtn = document.getElementById("LogInBtn");
+const UserName = document.getElementById("UserName");
+const Password = document.getElementById("Password");
 const SignUpBtn = document.getElementById("SignUpBtn");
-const demo = document.getElementById("Demo");
-const LogOutBtn=document.getElementById("LogOutBtn");
+const LogOutBtn = document.getElementById("LogOutBtn");
+const Demo = document.getElementById("Demo");
 
 const users = [ 
-    {"userName": "janne", "password": "test"},
+    {"UserName": "janne", "Password": "test"}
+    {"UserName": "anton", "Password": "kuken"}
  ];
- if (!localStorage.getItem("userName, password")) {
-    fetch(".json")
+
+ function loginStay(){
+    if (localStorage.getItem("UserName", "Password")){
+            Demo.innerHTML =  ""
+    }
+
+
+    function (){
+        if (localStorage.getItem("UserName"))
+    
+    loginStatus()}
+    
+ if (!localStorage.getItem("UserName", "Password")) {
+    fetch("UserName.json", "Password.json")
     .then(res => res.json())
-    .then(data => {
-        // console.log("fetch json", data);
+    .then(data => 
+        console.log("fetch json", data);
 
-        // let stringData = JSON.stringify(data);
-        // console.log("stringified", stringData);
+        let stringData = JSON.stringify(data);
+        console.log("stringified", stringData);
 
-        // let parsedData = JSON.parse(stringData);
+        let parsedData = JSON.parse(stringData);
         // console.log("parsed data", parsedData);
 
-        localStorage.setItem("persons", JSON.stringify(data))
+        localStorage.setItem("UserName", "Password", JSON.stringify())
     })
 }
  loginBtn.addEventListener("click",() => {    
     console.log("klick på knapp");
   
  for (i = 0; i < users.length; i++) {
-   if (userName.value == users[i].userName && password.value == users[i].password) {
-     demo.innerHTML = "Du är inloggad som: " + userName.value;
+   if (UserName.value == users[i].UserName && Password.value == users[i].Password) {
+     Demo.innerHTML = "auf wiedersehen: " + UserName.value;
      return true;
    }
  }
- demo.innerHTML = "Användaren finns inte";
+ Demo.innerHTML = "Error. 3... 2.. 1. Engage self destruct mechanism. Take cover";
 
  }  );
 // //!*
@@ -53,5 +67,9 @@ const users = [
 SignUpBtn.addEventListener("click"), () => {
     console.log("Klick på knapp")
 
-        let 
-}
+        let NewAccount = {
+            "UserName": SaveUserName.value,
+            "Password": SavePassword.value,
+        }
+
+      }

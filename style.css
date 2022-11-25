@@ -1,0 +1,20 @@
+body {
+    background-color: burlywood;
+}
+
+.box {
+    border: 1px solid black;
+    padding: 20px;
+    margin: 10px;
+}
+
+
+footer .f00ter {
+    position: fixed;
+    width: 96%;
+    bottom: 0px;
+    font-size: 1.2rem;
+    padding: 15PX;
+    background-color: blanchedalmond;
+
+}
