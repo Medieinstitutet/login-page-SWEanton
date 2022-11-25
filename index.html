@@ -5,38 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login / Sign up</title>
-    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
+    <header>
+        <div id="loggedOutView">
+            <input type="text" placeholder="Enter Username" id="usernameInput">
+            <input type="text" placeholder="Enter Password" id="passwordInput"> 
+            <button id="logInBtn">Log in</button>
+        </div>
+    </header>
 
-      <b>Username:</b>
-      <input id="UserName" type="text" placeholder= "Enter Username" >
-
-      <b>Password:</b>
-      <input id="Password" type="text" placeholder= "Enter Password" >
-
-<!-- knappar -->
-      <button id="LogInBtn" ><b>Log in</b></button>
-      <button id="SignUpBtn"><b>Create account</b></button>
-      <button id="LogOutBtn"><b>Log out</b></button> </button>
-
-<
-
+    <div class="form-popup" id="accForm">
+      <form class="form-container">
+        <h1>Create Account</h1>
+        <input type="text" id="userName" placeholder="Enter Username">
+        <input type="text" id="password" placeholder="Enter Password">
+        <input type="text" id="passwordConfirm" placeholder="Confirm Password">
+        <button id="createAccBtn">Create Account</button>
+        <button type="button" id="closeBtn">Close</button>
+      </form>
     </div>
-
-<h1 id="Demo"></h1>
-
-<div id="NewAccount">
-
-</div>
-<footer>
-<div id="f00ter"><b>HELLO WELCOME TO THE CIRCUS, THIS IS A SIMPLE DISCLAIMER, PLEASE ACCEPT COOKEIS AND DONT FEED THE LIONS</b>
-
-</div>
-
-</footer>
+    
+    <div id="loggedInView">
+        <p>Hello janne. Your application to squid game is now completed.</p>
+        <p>Unexplainable events might occur...</p>
+        <div id="logOut"></div>
+    </div>
+    
+    <p id="message"></p>
+    
+    <footer>
+        <p class="footer">Warning! There is no turning back after succesfully logging in. <br><br>“Freedom is something that dies unless it's used.”
+            ― Hunter S. Thompson </p>
+    </footer>
 
 </body>
+<script src="script.js" defer></script>
 </html>

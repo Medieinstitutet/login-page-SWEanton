@@ -1,20 +1,66 @@
 body {
-    background-color: burlywood;
-}
+    display: block;
+    width: 100%;
+    background-image: url("./img/squidgame.jpg");
+    max-width: fit-content;
+    max-height: fit-content;
 
-.box {
-    border: 1px solid black;
-    padding: 20px;
+}
+header { 
+    position: relative;
+    display: inline-block
+}
+h1 {
+    color: black;
+}
+#loggedOutView {
+    padding: 10px;
+
+
+}
+.open-button {
+    padding: 10px;
+    cursor: pointer;
+}
+.form-popup {
+  display: none;
+  position: fixed;
+ top: 30%;
+  right: 50%;
+  border: 3px solid gray;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+button {
+    padding: 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+#message {
+    font-size: 1.2rem;
     margin: 10px;
 }
+#loggedInView {
+    display: none;
+    font-size:3rem;
+    margin: 10px;
+    color: rgb(116, 28, 22);
+}
+.footer {
+    position:absolute;
+    font-size: 1.5rem;
+    bottom: 1px;
 
-
-footer .f00ter {
-    position: fixed;
-    width: 96%;
-    bottom: 0px;
-    font-size: 1.2rem;
-    padding: 15PX;
-    background-color: blanchedalmond;
-
+    color: rgb(93, 10, 10);
 }

@@ -1,75 +1,91 @@
 console.log("test"); 
 
-//Deklarerar alla element//
-const LoginBtn = document.getElementById("LogInBtn");
-const UserName = document.getElementById("UserName");
-const Password = document.getElementById("Password");
-const SignUpBtn = document.getElementById("SignUpBtn");
-const LogOutBtn = document.getElementById("LogOutBtn");
-const Demo = document.getElementById("Demo");
+const usernameInput = document.getElementById("usernameInput");
+const passwordInput = document.getElementById("passwordInput");
+const logInBtn = document.getElementById("logInBtn");
+const createAccBtn = document.getElementById("createAccBtn");
+const closeBtn = document.getElementById("closeBtn");
+const userName = document.getElementById("userName");
+const password = document.getElementById("password");
+const passwordConfirm = document.getElementById("passwordConfirm");
+const loggedOutView = document.getElementById("loggedOutView");
+const message = document.getElementById("message");
+const loggedInView = document.getElementById("loggedInView");
 
-const users = [ 
-    {"UserName": "janne", "Password": "test"}
-    {"UserName": "anton", "Password": "kuken"}
- ];
+const user = [
+    {username:"janne", password:"test"},
+]
+ 
+if (localStorage.getItem("personsRegister")) {
+    console.log("Det finns sparat i LS");
+} else {
+    console.log("Finns inget sparat i LS");
+ 
+    localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
+}
+ 
+createAccBtn.addEventListener("click", () => {
 
- function loginStay(){
-    if (localStorage.getItem("UserName", "Password")){
-            Demo.innerHTML =  ""
+    if (password === passwordConfirm) {
+        
+        let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
+
+        let newRegister = {
+            username: userName.value,
+            password: password.value,
+        };
+
+        newRegister.push(personsRegister)
+    
+        localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
+
+        message.insertAdjacentText = "You have successfully created an account!";
+        
+    } else {
+        function createAccError() {
+            message.insertAdjacentText = "Passwords not matching";
+        }
+        createAccError();
+    }
+})
+
+logInBtn.addEventListener("click", () => { 
+    let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
+    for (i = 0; i < personsRegister.length; i++) {
+      if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
+        loggedOutView.style.display = "none"
+        message.innerHTML = ""
+        logOutBtn.style.padding = "10px"; 
+        logOutBtn.style.margin = "2px"; 
+        logOutBtn.style.cursor = "pointer";
+        loggedInView.style.display = "block";
+        message.innerHTML = "Welcome: " + usernameInput.value;
+        return true;
+    } else {
+        message.innerHTML = "Wrong credentials";
+    }
+    }
+})
+
+        const logOut = document.getElementById("logOut");
+        let logOutBtn = document.createElement("button");
+        let textButton = document.createTextNode("Log Out");
+        logOutBtn.appendChild(textButton);
+        logOut.appendChild(logOutBtn);
+        logOutBtn.addEventListener("click", () => {
+            loggedInView.style.display = "none"
+            loggedOutView.style.display = "block"
+            message.innerHTML = "";
+            loggedOutView.appendChild
+        })
+
+function reloadLogInStatus(logInStatus) {
+    if (logInStatus === null) {
+
+    } else if (logInStatus === personsRegister) {
+        
     }
 
-
-    function (){
-        if (localStorage.getItem("UserName"))
-    
-    loginStatus()}
-    
- if (!localStorage.getItem("UserName", "Password")) {
-    fetch("UserName.json", "Password.json")
-    .then(res => res.json())
-    .then(data => 
-        console.log("fetch json", data);
-
-        let stringData = JSON.stringify(data);
-        console.log("stringified", stringData);
-
-        let parsedData = JSON.parse(stringData);
-        // console.log("parsed data", parsedData);
-
-        localStorage.setItem("UserName", "Password", JSON.stringify())
-    })
 }
- loginBtn.addEventListener("click",() => {    
-    console.log("klick på knapp");
-  
- for (i = 0; i < users.length; i++) {
-   if (UserName.value == users[i].UserName && Password.value == users[i].Password) {
-     Demo.innerHTML = "auf wiedersehen: " + UserName.value;
-     return true;
-   }
- }
- Demo.innerHTML = "Error. 3... 2.. 1. Engage self destruct mechanism. Take cover";
 
- }  );
-// //!*
-// log_in = () => { 
-//     console.log("klick på knapp");
-  
-//     for (i = 0; i < users.length; i++) {
-//       if (userName.value == users[i].userName && password.value == users[i].password) {
-//         demo.innerHTML = "Du är inloggad som: " + userName.value;
-//         return true;
-//       }
-//     }
-//     demo.innerHTML = "Användaren finns inte";
-// }//!
-
-SignUpBtn.addEventListener("click"), () => {
-    console.log("Klick på knapp")
-
-        let NewAccount = {
-            "UserName": SaveUserName.value,
-            "Password": SavePassword.value,
-        }
-
-      }
+window.onload = reloadLogInStatus(localStorage.getItem("personsRegister"));
