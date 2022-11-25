@@ -13,7 +13,7 @@ header {
 h1 {
     color: black;
 }
-#loggedOutView {
+#logInPage {
     padding: 10px;
 
 
@@ -51,7 +51,7 @@ button {
     font-size: 1.2rem;
     margin: 10px;
 }
-#loggedInView {
+#logOutPage {
     display: none;
     font-size:3rem;
     margin: 10px;

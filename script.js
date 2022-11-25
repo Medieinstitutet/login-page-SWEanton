@@ -3,27 +3,17 @@ console.log("test");
 const usernameInput = document.getElementById("usernameInput");
 const passwordInput = document.getElementById("passwordInput");
 const logInBtn = document.getElementById("logInBtn");
-const createAccBtn = document.getElementById("createAccBtn");
-const closeBtn = document.getElementById("closeBtn");
 const userName = document.getElementById("userName");
 const password = document.getElementById("password");
-const passwordConfirm = document.getElementById("passwordConfirm");
-const loggedOutView = document.getElementById("loggedOutView");
+const logInPage = document.getElementById("logInPage");
 const message = document.getElementById("message");
-const loggedInView = document.getElementById("loggedInView");
+const logOutPage = document.getElementById("logOutPage");
 
 const user = [
     {username:"janne", password:"test"},
 ]
  
-if (localStorage.getItem("personsRegister")) {
-    console.log("Det finns sparat i LS");
-} else {
-    console.log("Finns inget sparat i LS");
- 
-    localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
-}
- 
+
 createAccBtn.addEventListener("click", () => {
 
     if (password === passwordConfirm) {
@@ -35,30 +25,21 @@ createAccBtn.addEventListener("click", () => {
             password: password.value,
         };
 
-        newRegister.push(personsRegister)
-    
-        localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 
-        message.insertAdjacentText = "You have successfully created an account!";
         
-    } else {
-        function createAccError() {
-            message.insertAdjacentText = "Passwords not matching";
-        }
-        createAccError();
-    }
+    } 
 })
 
 logInBtn.addEventListener("click", () => { 
     let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
     for (i = 0; i < personsRegister.length; i++) {
       if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
-        loggedOutView.style.display = "none"
+        logInPage.style.display = "none"
         message.innerHTML = ""
         logOutBtn.style.padding = "10px"; 
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
-        loggedInView.style.display = "block";
+        logOutPage.style.display = "block";
         message.innerHTML = "Welcome: " + usernameInput.value;
         return true;
     } else {
@@ -73,10 +54,10 @@ logInBtn.addEventListener("click", () => {
         logOutBtn.appendChild(textButton);
         logOut.appendChild(logOutBtn);
         logOutBtn.addEventListener("click", () => {
-            loggedInView.style.display = "none"
-            loggedOutView.style.display = "block"
+          logOutPage.style.display = "none"
+            logInPage.style.display = "block"
             message.innerHTML = "";
-            loggedOutView.appendChild
+            logInPage.appendChild
         })
 
 function reloadLogInStatus(logInStatus) {
