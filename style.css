@@ -7,45 +7,27 @@ body {
 
 }
 #demo {
-    font-size: 1.2rem;
     margin: 10px;
+    font-size: 1rem;
+
 }
 header { 
     position: relative;
     display: inline-block
 }
 h1 {
-    color: black;
+    color: rgb(72, 4, 4);
+    position: relative;
+    z-index: 666;
 }
+
+
 #logInPage {
     padding: 10px;
 
 
 }
-.open-button {
-    padding: 10px;
-    cursor: pointer;
-}
-.form-popup {
-  display: none;
-  position: fixed;
- top: 30%;
-  right: 50%;
-  border: 3px solid gray;
-  z-index: 9;
-}
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-.form-container {
-  width: 80%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
-}
+
 button {
     padding: 10px;
     margin: 2px;
