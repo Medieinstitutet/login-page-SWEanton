@@ -6,6 +6,10 @@ body {
     max-height: fit-content;
 
 }
+#demo {
+    font-size: 1.2rem;
+    margin: 10px;
+}
 header { 
     position: relative;
     display: inline-block
@@ -47,10 +51,7 @@ button {
     margin: 2px;
     cursor: pointer;
 }
-#message {
-    font-size: 1.2rem;
-    margin: 10px;
-}
+
 #logOutPage {
     display: none;
     font-size:3rem;
