@@ -47,6 +47,8 @@ function toggleBtn () {
 
     let logoutBtn = document.createElement("button");
     placeholderBtn.appendChild(logoutBtn);
+    userPassword.style.display = "none";
+    userID.style.display = "none";
     logoutBtn.style.color = "red";
     logoutBtn.innerText = "log out";
     logoutBtn.addEventListener("click", () => { 
@@ -72,7 +74,7 @@ function loggedIn() {
     mainBox.append(welcomeBox);
     welcomeBox.className = "box";
     welcomeBox.insertAdjacentHTML("afterbegin", "You're now accepted to the 2024 Squid Game. User:  " +userID.value);
-}
+}   
 function alreadyLogIn() {
     let loggedInUser = JSON.parse(localStorage.getItem("userName"));
     let welcomeBox = document.createElement("span");
