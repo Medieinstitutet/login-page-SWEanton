@@ -1,7 +1,6 @@
 console.log("test"); 
 const demo = document.getElementById("demo");
 const usernameInput = document.getElementById("usernameInput");
-const userName = document.getElementById("userName");
 const passwordInput = document.getElementById("passwordInput");
 const password = document.getElementById("password");
 const logInBtn = document.getElementById("logInBtn");
@@ -9,9 +8,8 @@ const logInPage = document.getElementById("logInPage");
 const logOutPage = document.getElementById("logOutPage");
 
 let users = [
-    {userName:"janne", password:"test"},
+    {user:"janne", password:"test"},
 ]
-var personsRegister =
 
 logInBtn.addEventListener("click", () => { 
   let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
@@ -28,7 +26,7 @@ logInBtn.addEventListener("click", () => {
   }
   }
 })
-
+localStorage.setItem("userName", JSON.stringify(loginUser));
         const logOut = document.getElementById("logOut");
         let logOutBtn = document.createElement("button");
         let textButton = document.createTextNode("Exit");
@@ -53,8 +51,6 @@ function newFunction() {
 
 var personsRegister = localStorage.getItem('userName', 'password');
 console.log(personsRegister); //  To print the value of localStorage variable name
-
-var name = localStorage.getItem('name');
 // Set localStorage item
 localStorage.setItem('userName', JSON.stringify(userName));
 var retrievedObject = localStorage.getItem('userName');
@@ -68,6 +64,7 @@ var retrievedObject = localStorage.getItem('password');
 
 // console.log retrieved item
 console.log('password: ', JSON.parse(password));
+
 
 
 
@@ -88,3 +85,4 @@ console.log("userName: ", JSON.parse(usernameInput));
 alert( localStorage.usernameInput );
 
 alert( localStorage.passwordInput );
+
