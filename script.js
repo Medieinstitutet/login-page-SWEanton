@@ -1,88 +1,90 @@
-console.log("test"); 
-const demo = document.getElementById("demo");
-const usernameInput = document.getElementById("usernameInput");
-const passwordInput = document.getElementById("passwordInput");
-const password = document.getElementById("password");
-const logInBtn = document.getElementById("logInBtn");
-const logInPage = document.getElementById("logInPage");
-const logOutPage = document.getElementById("logOutPage");
+console.log("test");
+const header = document.getElementById("header");
+const footer = document.getElementById("footer");
+const mainBox = document.getElementById("mainBox");
 
-let users = [
-    {user:"janne", password:"test"},
-]
+const userID = document.getElementById("usernameBox");
+const userPassword = document.getElementById("passwordBox");
+const placeholderBtn = document.getElementById("placeholderBtn");
 
-logInBtn.addEventListener("click", () => { 
-  let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
-  for (i = 0; i < personsRegister.length; i++) {
-    if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
-      logInPage.style.display = "none"
-      logOutPage.style.display = "block";
-      demo.innerHTML = "Best of luck: " + usernameInput.value;
-      demo.style.color = "red"
-      return true;
-  } else {
-    demo.innerHTML = "You have been carefully selected for this and we've already given you the correct credentials. Please use them, this is NOT a joke. ";
-    demo.style.color = "red";
-  }
-  }
-})
-localStorage.setItem("userName", JSON.stringify(loginUser));
-        const logOut = document.getElementById("logOut");
-        let logOutBtn = document.createElement("button");
-        let textButton = document.createTextNode("Exit");
-        logOutBtn.appendChild(textButton);
-        logOut.appendChild(logOutBtn);
-        logOutBtn.addEventListener("click", () => {
-          logOutPage.style.display = "none"
-            logInPage.style.display = "block"
-            demo.innerHTML = "";
-            logInPage.appendChild = "";
-        })
-
-function newFunction() {
-  logInBtn.addEventListener("click", () => {
-
-    if (password === passwordConfirm) {
+let credentials = [
+    {userName: "janne",
+     password: "test",
     }
-  });
+    ];
+
+
+function checkPassword() {  
+    let person = credentials.find(person => person.userName === userID.value);
+    if (person && person.password === userPassword.value) {
+        let loginUser = userID.value
+        localStorage.setItem("userName", JSON.stringify(loginUser));
+        toggleBtn();
+        loggedIn();
+
+    } else {
+        demo.innerHTML = "Wrong credentials, please try again.  ";
+        demo.style.color = "red";
+
+    }
+    userID.value="";
+    userPassword.value="";
 }
 
+if (localStorage.getItem("userName")) { 
+    alreadyLogIn();
+    toggleBtn();
+} else {    
+    createLoginBtn();
+    loggedout();
+} 
 
 
-var personsRegister = localStorage.getItem('userName', 'password');
-console.log(personsRegister); //  To print the value of localStorage variable name
-// Set localStorage item
-localStorage.setItem('userName', JSON.stringify(userName));
-var retrievedObject = localStorage.getItem('userName');
+function toggleBtn () {
+    placeholderBtn.innerHTML = "";      
 
-// console.log retrieved item
-console.log('userName: ', JSON.parse(userName));
+    let logoutBtn = document.createElement("button");
+    placeholderBtn.appendChild(logoutBtn);
+    logoutBtn.innerText = "logout";
+    userID.style.display = "none";
+    userPassword.style.display ="none";
 
-// Set localStorage item
-localStorage.setItem('password', JSON.stringify(password));
-var retrievedObject = localStorage.getItem('password');
+    logoutBtn.addEventListener("click", () => { 
+        mainBox.innerHTML= "";
+        localStorage.removeItem("userName");
+        createLoginBtn();        
+    })         
+}
 
-// console.log retrieved item
-console.log('password: ', JSON.parse(password));
+function createLoginBtn () {    
+    placeholderBtn.innerHTML ="";
+    userID.style.display = "";
+    userPassword.style.display = "";
 
+    let loginBtn = document.createElement("button");
+    placeholderBtn.appendChild(loginBtn);
+    loginBtn.innerText = "Login";
 
+    loginBtn.addEventListener("click", () => {
+        checkPassword();        
+    })
+}
 
+function loggedIn() {    
+    let welcomeBox = document.createElement("span");
+    mainBox.append(welcomeBox);
+    welcomeBox.className = "box";
+    welcomeBox.insertAdjacentHTML("afterbegin", "You're now accepted to the 2024 Squid Game. User:  " +userID.value);
+}
 
-localStorage.setItem('userName', JSON.stringify(userName));
-var retrievedObject = localStorage.getItem("userName");
+function loggedout() {
+    mainBox.innerHTML= "";
+}
 
-// console.log retrieved item
-console.log("userName: ", JSON.parse(userName));
-
-// Set localStorage item
-localStorage.setItem('usernameInput', JSON.stringify(usernameInput));
-var retrievedObject = localStorage.getItem("password");
-
-// console.log retrieved item
-console.log("userName: ", JSON.parse(usernameInput));
-
-
-alert( localStorage.usernameInput );
-
-alert( localStorage.passwordInput );
-
+function alreadyLogIn() {
+    let loggedInUser = JSON.parse(localStorage.getItem("userName"));
+    let welcomeBox = document.createElement("span");
+    mainBox.append(welcomeBox);
+    welcomeBox.className = "box";
+    welcomeBox.insertAdjacentHTML("afterbegin", "Hello again, did you change your mind? If so, please send 0.5 $BTC to #34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo. User: " +loggedInUser);
+}
