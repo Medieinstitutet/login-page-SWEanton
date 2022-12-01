@@ -1,5 +1,9 @@
 body {
     background: url(img/squidgame.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
 
 .usernameBox {
